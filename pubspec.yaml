@@ -13,9 +13,9 @@ dependencies:
     sdk: flutter
   auto_route: ^7.4.0
   infrastructure:
-    path: "../infrastructure"
+    path: "../shadowkeep-infrastructure"
   domain:
-    path: "../domain"
+    path: "../shadowkeep-domain"
   http: ^1.0.0
   go_router: ^7.1.1
   collection: ^1.17.1
