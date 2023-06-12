@@ -5,27 +5,65 @@ import 'package:infrastructure/interfaces/icharacter_service.dart';
 
 class MockCharacterService extends MockChapterService
     implements ICharacterService {
+  List<Character> _characters = [
+    Character(
+      id: 1,
+      bookId: 1,
+      firstName: "Steve",
+      lastName: "Osmar",
+      gender: true,
+      age: 22,
+      description:
+          "Steve is a smart bloke, he likes to dabble into technology.",
+    ),
+    Character(
+      id: 2,
+      bookId: 1,
+      firstName: "Penny",
+      lastName: "Osmar",
+      gender: false,
+      age: 19,
+      description:
+          "Penny is pretty although not the brightest bulb in the room.",
+    ),
+    Character(
+      id: 3,
+      bookId: 1,
+      firstName: "Omini",
+      lastName: "Komar",
+      gender: true,
+      age: 25,
+      description:
+          "Omini is an evil person that is really good at manipulating people, he dreams of seeing the world burn.",
+    ),
+  ];
+
   @override
-  Future<bool> addCharacter(Character character) {
-    // TODO: implement addCharacter
-    throw UnimplementedError();
+  Future<bool> addCharacter(Character character) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    _characters.add(character);
+    return true;
   }
 
   @override
   Future<List<Chapter>> getMentions(int characterId) {
-    // TODO: implement getMentions
-    throw UnimplementedError();
+    return getChaptersIncludingCharacter([characterId]);
   }
 
   @override
-  Future<List<Character>> getRelatedCharacters(int bookId) {
-    // TODO: implement getRelatedCharacters
-    throw UnimplementedError();
+  Future<List<Character>> getRelatedCharacters(int bookId) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    return [_characters.first, _characters.elementAt(1)];
   }
 
   @override
-  Future<bool> removeCharacter(int characterId) {
-    // TODO: implement removeCharacter
-    throw UnimplementedError();
+  Future<bool> removeCharacter(int characterId) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    _characters.removeWhere((element) => element.id == characterId);
+
+    return true;
   }
 }
