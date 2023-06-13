@@ -36,4 +36,7 @@ class SessionManager implements ISessionManager {
 
   @override
   late int projectId;
+
+  @override
+  late int bookId;
 }
