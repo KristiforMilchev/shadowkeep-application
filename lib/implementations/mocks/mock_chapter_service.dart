@@ -8,8 +8,20 @@ class MockChapterService extends MockPageService implements IChapterService {
   int _book = 0;
   List<Chapter> _chapters = [
     Chapter(id: 1, bookId: 1, pageTitle: "Test", pages: []),
-    Chapter(id: 2, bookId: 1, pageTitle: "test 2", pages: [], relatedTo: 1),
-    Chapter(id: 2, bookId: 1, pageTitle: "test 2", pages: [], relatedTo: 2),
+    Chapter(
+      id: 2,
+      bookId: 1,
+      pageTitle: "test 2",
+      pages: [],
+      relatedTo: 1,
+    ),
+    Chapter(
+      id: 2,
+      bookId: 1,
+      pageTitle: "test 3",
+      pages: [],
+      relatedTo: 2,
+    ),
   ];
 
   @override

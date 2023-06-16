@@ -66,4 +66,32 @@ class MockCharacterService extends MockChapterService
 
     return true;
   }
+
+  @override
+  Future<List<Character>> getEncounters(int characterId, int bookId) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    return [
+      Character(
+        id: 2,
+        bookId: 1,
+        firstName: "Penny",
+        lastName: "Osmar",
+        gender: false,
+        age: 19,
+        description:
+            "Penny is pretty although not the brightest bulb in the room.",
+      ),
+      Character(
+        id: 3,
+        bookId: 1,
+        firstName: "Omini",
+        lastName: "Komar",
+        gender: true,
+        age: 25,
+        description:
+            "Omini is an evil person that is really good at manipulating people, he dreams of seeing the world burn.",
+      ),
+    ];
+  }
 }
