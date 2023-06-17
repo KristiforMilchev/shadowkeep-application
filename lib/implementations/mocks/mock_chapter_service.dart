@@ -1,6 +1,6 @@
 import 'package:application/implementations/mocks/mock_page_service.dart';
+import 'package:domain/models/book_page.dart';
 import 'package:domain/models/chapter.dart';
-import 'package:domain/models/page.dart';
 import 'package:infrastructure/interfaces/ichapter_service.dart';
 
 class MockChapterService extends MockPageService implements IChapterService {
@@ -51,7 +51,7 @@ class MockChapterService extends MockPageService implements IChapterService {
   }
 
   @override
-  Future<List<Page>> getPages(int chapterId) async {
+  Future<List<BookPage>> getPages(int chapterId) async {
     await Future.delayed(const Duration(milliseconds: 500));
 
     return getChapterPages(chapterId);
