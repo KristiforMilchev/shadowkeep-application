@@ -80,4 +80,14 @@ class MockChapterService extends MockPageService implements IChapterService {
 
     return _chapters.where((element) => element.bookId == bookId).toList();
   }
+
+  @override
+  Future<bool> canAdd(int id) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    var lastChapter =
+        _chapters.where((element) => element.bookId == _book).toList().last;
+
+    return lastChapter.id == id;
+  }
 }
