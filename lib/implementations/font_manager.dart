@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:infrastructure/interfaces/ifont_manager.dart';
 
 class FontManager implements IFontManager {
-  FontManager();
+  List<String> _fonts = [];
 
   @override
   Future<bool> loadFontFromFile(String location, String fontName) async {
@@ -21,5 +21,21 @@ class FontManager implements IFontManager {
   Future<bool> removeFont(String name) {
     // TODO: implement removeFont
     throw UnimplementedError();
+  }
+
+  @override
+  Future<List<String>> getFonts() async {
+    //TODO Add query to local storage module once it's finished
+
+    _fonts = [
+      "Loto",
+      "Roboto",
+      "Akatab-Black",
+      "YsabeauInfant",
+      "Ubuntu",
+      "PlayfairDisplay",
+    ];
+
+    return _fonts;
   }
 }
