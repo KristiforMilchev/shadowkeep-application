@@ -9,23 +9,33 @@ class Observer implements IObserver {
   }
 
   @override
-  subscribe<T>(String callbackLocation, Function fn, {T? data}) {
+  void subscribe<T>(String callbackLocation, Function fn, {T? data}) {
     _observers.add(ObserverCall(name: callbackLocation, fn: fn, data: data));
   }
 
   @override
   dispose(String callbackLocation) {
-    var exits =
-        _observers.firstWhere((element) => element.name == callbackLocation);
-    
-    _observers.remove(exits);
+    var exits = _observers.any((element) => element.name == callbackLocation);
+    if (exits) {
+      var getObserver = _observers
+          .where((element) => element.name == callbackLocation)
+          .toList();
+      getObserver.forEach((element) {
+        _observers.remove(element);
+      });
+    }
   }
 
   @override
-  Function getObserver(String callbackName) {
-    var exits =
-        _observers.firstWhere((element) => element.name == callbackName);
-
-    return exits.fn;
+  void getObserver(String callbackName, dynamic data) {
+    _observers
+        .where((element) => element.name == callbackName)
+        .forEach((element) {
+      if (data != null) {
+        element.fn.call(data);
+      } else {
+        element.fn.call();
+      }
+    });
   }
 }
