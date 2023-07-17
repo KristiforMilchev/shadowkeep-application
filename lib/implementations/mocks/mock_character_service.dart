@@ -40,8 +40,6 @@ class MockCharacterService extends MockChapterService
 
   @override
   Future<bool> addCharacter(Character character) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     _characters.add(character);
     return true;
   }
@@ -53,15 +51,11 @@ class MockCharacterService extends MockChapterService
 
   @override
   Future<List<Character>> getRelatedCharacters(int bookId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     return [_characters.first, _characters.elementAt(1)];
   }
 
   @override
   Future<bool> removeCharacter(int characterId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     _characters.removeWhere((element) => element.id == characterId);
 
     return true;
@@ -69,8 +63,6 @@ class MockCharacterService extends MockChapterService
 
   @override
   Future<List<Character>> getEncounters(int characterId, int bookId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     return [
       Character(
         id: 2,

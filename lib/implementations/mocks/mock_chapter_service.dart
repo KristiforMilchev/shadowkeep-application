@@ -26,16 +26,12 @@ class MockChapterService extends MockPageService implements IChapterService {
 
   @override
   Future<bool> addChapter(Chapter chapter) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     _chapters.add(chapter);
     return true;
   }
 
   @override
   Future<bool> deleteChapter(Chapter chapter) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     _chapters.removeWhere((element) => element.id == chapter.id);
 
     return true;
@@ -43,8 +39,6 @@ class MockChapterService extends MockPageService implements IChapterService {
 
   @override
   Future<bool> editChapter(Chapter chapter) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     _chapters.removeWhere((element) => element.id == chapter.id);
     _chapters.add(chapter);
     return true;
@@ -52,15 +46,11 @@ class MockChapterService extends MockPageService implements IChapterService {
 
   @override
   Future<List<BookPage>> getPages(int chapterId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     return getChapterPages(chapterId);
   }
 
   @override
   Future<bool> setBookId(int bookId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     _book = bookId;
 
     return true;
@@ -69,22 +59,16 @@ class MockChapterService extends MockPageService implements IChapterService {
   @override
   Future<List<Chapter>> getChaptersIncludingCharacter(
       List<int> characters) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     return [];
   }
 
   @override
   Future<List<Chapter>> getAllChapters(int bookId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     return _chapters.where((element) => element.bookId == bookId).toList();
   }
 
   @override
   Future<bool> canAdd(int id) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     var lastChapter =
         _chapters.where((element) => element.bookId == _book).toList().last;
 

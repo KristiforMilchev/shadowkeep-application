@@ -92,16 +92,12 @@ class MockPageService implements IPageService {
 
   @override
   Future<bool> addPage(BookPage current) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     _pages.add(current);
     return true;
   }
 
   @override
   Future<bool> deletePage(int pageId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     var page = _pages.firstWhereOrNull(
         (element) => element.id == pageId && element.bookId == _bookId);
     if (page == null) return false;
@@ -119,8 +115,6 @@ class MockPageService implements IPageService {
 
   @override
   Future<List<BookPage>> getChapterPages(int chapterId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     return _pages
         .where((element) =>
             element.chapterId == chapterId && element.bookId == _bookId)
@@ -129,15 +123,11 @@ class MockPageService implements IPageService {
 
   @override
   Future<BookPage> getPage(int pageId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     return _pages.firstWhere((element) => element.id == pageId);
   }
 
   @override
   Future<bool> setBookId(int bookId) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     _bookId = bookId;
     return true;
   }
