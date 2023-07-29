@@ -12,15 +12,17 @@ class FontManager implements IFontManager {
         "/home/kristifor/Projects/shadowkeep/shadowkeep-presentation/shadowkeep-domain/lib/assets/fonts/Lobster-Regular.ttf";
     var data = await File(location).open();
     var contents = await data.read(await data.length());
+    // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
     await FontLoader(fontName).loadFont(contents, fontName);
 
     return true;
   }
 
   @override
-  Future<bool> removeFont(String name) {
-    // TODO: implement removeFont
-    throw UnimplementedError();
+  Future<bool> removeFont(String name) async {
+    //TODO implement logic to remove the config as well.
+    _fonts.remove(name);
+    return true;
   }
 
   @override
